@@ -1,0 +1,247 @@
+/*
+ Name:		Protogen.ino
+ Created:	2020-11-11 오전 5:57:03
+ Author:	jaehyun
+*/
+
+#include "src/expression.h"
+#include "src/MaxMatrix.h"
+
+//////////// 매우 중요
+#define DEBUG
+////////////
+
+//입출력 지정
+#define interruptPin 2	//상승인터럽트 핀
+#define interruptPin2 3	//하강 인터럽트 핀
+#define CS 8    // CS pin of MAX7219 module
+#define DIN 6   // DIN pin of MAX7219 module
+#define CLK 7   // CLK pin of MAX7219 module
+#define maxInUse 14 //연결된 도트 매트릭스 갯수
+
+
+volatile long debounceTime = 0;
+volatile long currentTime = 0;
+volatile long debounceTime2 = 0;
+volatile long currentTime2 = 0;
+byte counter = 0;
+byte counter2 = 0;
+int column1L = 104;
+int column2L = 112;
+int column3L = 95;
+int column4L = 103;
+int column1 = 8;
+int column2 = 16;
+int column3 = -1;
+int column4 = 7;
+int state = 0;
+int state2 = 1;
+int stateSerial;
+
+
+MaxMatrix m(DIN, CS, CLK, maxInUse);
+
+// the setup function runs once when you press reset or power the board
+void setup() {
+#ifdef DEBUG
+	Serial.begin(9600);
+#endif // DEBUG
+	m.init();
+	m.setIntensity(0);   // 도트 매트릭스 밝기 0~15
+	m.clear();
+	pinMode(interruptPin, INPUT);
+	attachInterrupt(digitalPinToInterrupt(2), ISR_button, FALLING); //인터럽트
+	pinMode(interruptPin2, INPUT);
+	attachInterrupt(digitalPinToInterrupt(3), ISR_button2, FALLING); //인터럽트
+
+}
+
+// the loop function runs over and over again until power down or reset
+void loop() {                        //This is where the program loop starts.
+#ifdef DEBUG
+	//Serial.println(state2);
+#endif // DEBUG
+	if (state2 == 1) {
+#ifdef DEBUG
+		if (Serial.available() > 0) {
+			stateSerial = Serial.read();
+		}
+		if (stateSerial == '0') {
+			state = 0;
+		}
+		if (stateSerial == '1') {
+			state = 1;
+		}
+		if (stateSerial == '2') {
+			state = 2;
+		}
+#endif // DEBUG
+		m.writeSprite(88, 0, icon01L);
+		m.writeSprite(80, 0, icon02L);
+		m.writeSprite(72, 0, icon03L);
+		m.writeSprite(64, 0, icon04L);
+		m.writeSprite(56, 0, noseLeft);
+		m.writeSprite(48, 0, noseRight);
+
+		m.writeSprite(40, 0, icon04);
+		m.writeSprite(32, 0, icon03);
+		m.writeSprite(24, 0, icon02);
+		m.writeSprite(16, 0, icon01);
+
+		if (counter2 > 17) {                    //눈 깜박이는 애니메이션 루프
+			for (int i = 0; i < 5; i++) {
+				column1L = column1L - 1;
+				column2L = column2L - 1;
+				column1 = column1 - 1;
+				column2 = column2 - 1;
+				column3L = column3L + 1;
+				column4L = column4L + 1;
+				column3 = column3 + 1;
+				column4 = column4 + 1;
+				m.setColumn(column1L, 0x00);
+				m.setColumn(column2L, 0x00);
+				m.setColumn(column3L, 0x00);
+				m.setColumn(column4L, 0x00);
+				m.setColumn(column1, 0x00);
+				m.setColumn(column2, 0x00);
+				m.setColumn(column3, 0x00);
+				m.setColumn(column4, 0x00);
+				delay(15);
+				counter2++;
+			}
+			column1L = 104;
+			column2L = 112;
+			column3L = 95;
+			column4L = 103;
+			column1 = 8;
+			column2 = 16;
+			column3 = -1;
+			column4 = 7;
+			counter2 = 0;
+		}
+		counter2++;
+#ifdef DEBUG
+		Serial.print(("Expression #"));
+		Serial.println(state);
+#endif // DEBUG
+		Change_expression(state); //Change_expression
+	}
+	else {
+		m.clear();
+	}
+}
+
+void ISR_button() { //외부 인터럽트 사용하여 state값 증가
+	currentTime = millis();
+	if ((currentTime - debounceTime) > 250) { //이전시간 비교를 통해 채터링 현상 방지
+		if (state < 15) {
+			state++;
+		}
+		else {
+			state = 0;
+		}
+	}
+	debounceTime = currentTime;
+}
+
+void ISR_button2() { //외부 인터럽트 사용하여 state값 감소
+	currentTime2 = millis();
+	if ((currentTime2 - debounceTime2) > 250) { //이전시간 비교를 통해 채터링 현상 방지
+		if (state > 0) {
+			state--;
+		}
+		else {
+			state = 15;
+		}
+	}
+	debounceTime2 = currentTime2;
+}
+
+void Change_expression(int num) {
+	switch (num) {                      //First button press: Happy expression
+	case 0:
+		m.writeSprite(104, 0, Eye01L);
+		m.writeSprite(96, 0, Eye02L);
+		m.writeSprite(8, 0, Eye02);
+		m.writeSprite(0, 0, Eye01);
+		break;
+
+	case 1:                             //Second button press: Surprised
+		m.writeSprite(104, 0, Spooked1L);
+		m.writeSprite(96, 0, Spooked2L);
+		m.writeSprite(8, 0, Spooked1);
+		m.writeSprite(0, 0, Spooked2);
+		break;
+
+	case 2:                             //Third button press: Angry expression
+		m.writeSprite(104, 0, Angry1L);
+		m.writeSprite(96, 0, Angry2L);
+		m.writeSprite(8, 0, Angry1);
+		m.writeSprite(0, 0, Angry2);
+		counter++;
+
+		if (counter == 16) {
+			m.writeSprite(64, 0, Glitch044L);
+			m.writeSprite(72, 0, Glitch033L);
+			m.writeSprite(80, 0, Glitch022L);
+			m.writeSprite(88, 0, Glitch011L);
+			m.writeSprite(16, 0, Glitch011);
+			m.writeSprite(24, 0, Glitch022);
+			m.writeSprite(32, 0, Glitch033);
+			m.writeSprite(40, 0, Glitch044);
+			delay(75);
+			counter++;
+		}
+		if ((counter >= 17) && (counter < 18)) {
+			m.writeSprite(88, 0, icon01L);
+			m.writeSprite(80, 0, icon02L);
+			m.writeSprite(72, 0, icon03L);
+			m.writeSprite(64, 0, icon04L);
+			m.writeSprite(40, 0, icon04);
+			m.writeSprite(32, 0, icon03);
+			m.writeSprite(24, 0, icon02);
+			m.writeSprite(16, 0, icon01);
+			delay(200);
+			counter++;
+		}
+		if (counter >= 18) {
+			m.writeSprite(64, 0, Glitch04L);
+			m.writeSprite(72, 0, Glitch03L);
+			m.writeSprite(80, 0, Glitch02L);
+			m.writeSprite(88, 0, Glitch01L);
+			m.writeSprite(16, 0, Glitch01);
+			m.writeSprite(24, 0, Glitch02);
+			m.writeSprite(32, 0, Glitch03);
+			m.writeSprite(40, 0, Glitch04);
+			delay(75);
+			counter = 0;
+		}
+		break;
+	case 3:
+		break;
+	case 4:
+		break;
+	case 5:
+		break;
+	case 6:
+		break;
+	case 7:
+		break;
+	case 8:
+		break;
+	case 9:
+		break;
+	case 10:
+		break;
+	case 11:
+		break;
+	case 12:
+		break;
+	case 13:
+		break;
+	case 14:
+		break;
+	case 15:
+		break;
+	}
+}
