@@ -34,7 +34,7 @@ int column1 = 8;
 int column2 = 16;
 int column3 = -1;
 int column4 = 7;
-int state = 3; //처음 전원 넣었을 때 나오는 화면을 설정함(case문에서 case 구문 번호로 하면 됨)
+int state = 4; //처음 전원 넣었을 때 나오는 화면을 설정함(case문에서 case 구문 번호로 하면 됨)
 int state2 = 1;
 int stateSerial;
 
@@ -223,8 +223,13 @@ void Change_expression(int num) {
     m.writeSprite(8, 0, cute_eye_R1);
     m.writeSprite(0, 0, cute_eye_R2);
     break;
-	case 4:
-		break;
+  case 4:                             //fifth button press: boring emotion(half oval eyes)
+    m.writeSprite(104, 0, boring_eyes_L1);
+    m.writeSprite(96, 0, boring_eyes_L2);
+    m.writeSprite(8, 0, boring_eye_R1);
+    m.writeSprite(0, 0, boring_eye_R2);
+    break;
+	
 	case 5:
 		break;
 	case 6:
