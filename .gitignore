@@ -1,1 +1,2 @@
-.Protogen.vsarduino.h
+*.Protogen.vsarduino.h
+*.suo
