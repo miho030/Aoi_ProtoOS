@@ -242,7 +242,7 @@ void Change_expression(int num) {
     m.writeSprite(96, 0, dizzy_eye_L2);
     m.writeSprite(8, 0, dizzy_eye_R1);
     m.writeSprite(0, 0, dizzy_eye_R2);
-    Change_expression_mouth(1);
+    Change_expression_mouth(2);
     break;
   case 7:
     break;
@@ -262,19 +262,22 @@ void Change_expression(int num) {
     break;
   case 15:
     break;
+  default:
+    break;
   }
 }
 
 void Change_expression_mouth(int num) {
   switch (num) {
   case 0: //기본 코,입
+    m.writeSprite(56, 0, noseLeft);
+    m.writeSprite(48, 0, noseRight);
+	
     m.writeSprite(88, 0, icon01L);
     m.writeSprite(80, 0, icon02L);
     m.writeSprite(72, 0, icon03L);
     m.writeSprite(64, 0, icon04L);
-    m.writeSprite(56, 0, noseLeft);
-    m.writeSprite(48, 0, noseRight);
-
+    
     m.writeSprite(40, 0, icon04);
     m.writeSprite(32, 0, icon03);
     m.writeSprite(24, 0, icon02);
@@ -288,10 +291,10 @@ void Change_expression_mouth(int num) {
     m.writeSprite(48, 0, noseRight);
 
     // 오른쪽 입 구현
-    m.writeSprite(40, 0, dying_mouth_R1);
-    m.writeSprite(32, 0, dying_mouth_R2);
-    m.writeSprite(24, 0, dying_mouth_R3);
-    m.writeSprite(16, 0, dying_mouth_R4);
+    m.writeSprite(88, 0, dying_mouth_R1);
+    m.writeSprite(80, 0, dying_mouth_R2);
+    m.writeSprite(72, 0, dying_mouth_R3);
+    m.writeSprite(64, 0, dying_mouth_R4);
 
     // 왼쪽 입 구현
     m.writeSprite(40, 0, dying_mouth_L1);
@@ -300,7 +303,7 @@ void Change_expression_mouth(int num) {
     m.writeSprite(16, 0, dying_mouth_L4);
     break;
 
-    case 2: //eighth button press: dying emotion(dizzy eyes)
+  case 2: //eighth button press: dying emotion(dizzy eyes)
     /*
       case 6번 실행 시, 동시 실행됨.
     */
@@ -308,10 +311,10 @@ void Change_expression_mouth(int num) {
     m.writeSprite(48, 0, noseRight);
     
     // 오른쪽 입 구현
-    m.writeSprite(40, 0, dizzy_mouth_R1);
-    m.writeSprite(32, 0, dizzy_mouth_R2);
-    m.writeSprite(24, 0, dizzy_mouth_R3);
-    m.writeSprite(16, 0, dizzy_mouth_R4);
+    m.writeSprite(88, 0, dizzy_mouth_R1);
+    m.writeSprite(80, 0, dizzy_mouth_R2);
+    m.writeSprite(72, 0, dizzy_mouth_R3);
+    m.writeSprite(64, 0, dizzy_mouth_R4);
 
     // 왼쪽 입 구현
     m.writeSprite(40, 0, dizzy_mouth_L1);
@@ -319,7 +322,6 @@ void Change_expression_mouth(int num) {
     m.writeSprite(24, 0, dizzy_mouth_L3);
     m.writeSprite(16, 0, dizzy_mouth_L4);
     break;
-      break;
   default:
     break;
   }
