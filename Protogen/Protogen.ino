@@ -8,7 +8,7 @@
 #include "src/MaxMatrix.h"
 
 //////////// 매우 중요
-/* #define DEBUG */
+#define DEBUG 
 ////////////
 
 //입출력 지정
@@ -34,7 +34,8 @@ int column1 = 8;
 int column2 = 16;
 int column3 = -1;
 int column4 = 7;
-int state = 4; //처음 전원 넣었을 때 나오는 화면을 설정함(case문에서 case 구문 번호로 하면 됨)
+int Eyestate = 4; //처음 전원 넣었을 때 나오는 화면을 설정함(case문에서 case 구문 번호로 하면 됨)
+int mouthstate = 0;
 int state2 = 1;
 int stateSerial;
 
@@ -53,7 +54,6 @@ void setup() {
 	attachInterrupt(digitalPinToInterrupt(2), ISR_button, FALLING); //인터럽트
 	pinMode(interruptPin2, INPUT);
 	attachInterrupt(digitalPinToInterrupt(3), ISR_button2, FALLING); //인터럽트
-
 }
 
 // the loop function runs over and over again until power down or reset
@@ -67,27 +67,15 @@ void loop() {                        //This is where the program loop starts.
 			stateSerial = Serial.read();
 		}
 		if (stateSerial == '0') {
-			state = 0;
+			Eyestate = 0;
 		}
 		if (stateSerial == '1') {
-			state = 1;
+			Eyestate = 1;
 		}
 		if (stateSerial == '2') {
-			state = 2;
+			Eyestate = 2;
 		}
 #endif // DEBUG
-		m.writeSprite(88, 0, icon01L);
-		m.writeSprite(80, 0, icon02L);
-		m.writeSprite(72, 0, icon03L);
-		m.writeSprite(64, 0, icon04L);
-		m.writeSprite(56, 0, noseLeft);
-		m.writeSprite(48, 0, noseRight);
-
-		m.writeSprite(40, 0, icon04);
-		m.writeSprite(32, 0, icon03);
-		m.writeSprite(24, 0, icon02);
-		m.writeSprite(16, 0, icon01);
-
 		if (counter2 > 17) {                    //눈 깜박이는 애니메이션 루프
 			for (int i = 0; i < 5; i++) {
 				column1L = column1L - 1;
@@ -122,36 +110,36 @@ void loop() {                        //This is where the program loop starts.
 		counter2++;
 #ifdef DEBUG
 		Serial.print(("Expression #"));
-		Serial.println(state);
+		Serial.println(Eyestate);
 #endif // DEBUG
-		Change_expression(state); //Change_expression
+		Change_expression(Eyestate); //Change_expression
 	}
 	else {
 		m.clear();
 	}
 }
 
-void ISR_button() { //외부 인터럽트 사용하여 state값 증가
+void ISR_button() { //외부 인터럽트 사용하여 Eyestate값 증가
 	currentTime = millis();
 	if ((currentTime - debounceTime) > 250) { //이전시간 비교를 통해 채터링 현상 방지
-		if (state < 15) {
-			state++;
+		if (Eyestate < 15) {
+			Eyestate++;
 		}
 		else {
-			state = 0;
+			Eyestate = 0;
 		}
 	}
 	debounceTime = currentTime;
 }
 
-void ISR_button2() { //외부 인터럽트 사용하여 state값 감소
+void ISR_button2() { //외부 인터럽트 사용하여 Eyestate값 감소
 	currentTime2 = millis();
 	if ((currentTime2 - debounceTime2) > 250) { //이전시간 비교를 통해 채터링 현상 방지
-		if (state > 0) {
-			state--;
+		if (Eyestate > 0) {
+			Eyestate--;
 		}
 		else {
-			state = 15;
+			Eyestate = 15;
 		}
 	}
 	debounceTime2 = currentTime2;
@@ -164,6 +152,7 @@ void Change_expression(int num) {
 		m.writeSprite(96, 0, Eye02L);
 		m.writeSprite(8, 0, Eye02);
 		m.writeSprite(0, 0, Eye01);
+		Change_expression_mouth(0);
 		break;
 
 	case 1:                             //Second button press: Surprised
@@ -171,6 +160,7 @@ void Change_expression(int num) {
 		m.writeSprite(96, 0, Spooked2L);
 		m.writeSprite(8, 0, Spooked1);
 		m.writeSprite(0, 0, Spooked2);
+		Change_expression_mouth(0);
 		break;
 
 	case 2:                             //Third button press: Angry expression
@@ -178,6 +168,7 @@ void Change_expression(int num) {
 		m.writeSprite(96, 0, Angry2L);
 		m.writeSprite(8, 0, Angry1);
 		m.writeSprite(0, 0, Angry2);
+		Change_expression_mouth(0);
 		counter++;
 
 		if (counter == 16) {
@@ -217,19 +208,21 @@ void Change_expression(int num) {
 			counter = 0;
 		}
 		break;
-  case 3:                             //fourth button press: Cute emotion(arrow eyes)
-    m.writeSprite(104, 0, cute_eye_L1);
-    m.writeSprite(96, 0, cute_eye_L2);
-    m.writeSprite(8, 0, cute_eye_R1);
-    m.writeSprite(0, 0, cute_eye_R2);
-    break;
-  case 4:                             //fifth button press: boring emotion(half oval eyes)
-    m.writeSprite(104, 0, boring_eyes_L1);
-    m.writeSprite(96, 0, boring_eyes_L2);
-    m.writeSprite(8, 0, boring_eye_R1);
-    m.writeSprite(0, 0, boring_eye_R2);
-    break;
-	
+	case 3:                             //fourth button press: Cute emotion(arrow eyes)
+		m.writeSprite(104, 0, cute_eye_L1);
+		m.writeSprite(96, 0, cute_eye_L2);
+		m.writeSprite(8, 0, cute_eye_R1);
+		m.writeSprite(0, 0, cute_eye_R2);
+		Change_expression_mouth(0);
+		break;
+	case 4:                             //fifth button press: boring emotion(half oval eyes)
+		m.writeSprite(104, 0, boring_eyes_L1);
+		m.writeSprite(96, 0, boring_eyes_L2);
+		m.writeSprite(8, 0, boring_eye_R1);
+		m.writeSprite(0, 0, boring_eye_R2);
+		Change_expression_mouth(0);
+		break;
+
 	case 5:
 		break;
 	case 6:
@@ -251,6 +244,39 @@ void Change_expression(int num) {
 	case 14:
 		break;
 	case 15:
+		break;
+	}
+}
+
+void Change_expression_mouth(int num) {
+	switch (num) {
+	case 0:	//기본 코,입
+		m.writeSprite(88, 0, icon01L);
+		m.writeSprite(80, 0, icon02L);
+		m.writeSprite(72, 0, icon03L);
+		m.writeSprite(64, 0, icon04L);
+		m.writeSprite(56, 0, noseLeft);
+		m.writeSprite(48, 0, noseRight);
+
+		m.writeSprite(40, 0, icon04);
+		m.writeSprite(32, 0, icon03);
+		m.writeSprite(24, 0, icon02);
+		m.writeSprite(16, 0, icon01);
+		break;
+	case 1:
+		m.writeSprite(88, 0, icon01L);//마직막 변수만 변경하고 필요한 표정마다 함수 넣어주면 됨
+		m.writeSprite(80, 0, icon02L);
+		m.writeSprite(72, 0, icon03L);
+		m.writeSprite(64, 0, icon04L);
+		m.writeSprite(56, 0, noseLeft);
+		m.writeSprite(48, 0, noseRight);
+
+		m.writeSprite(40, 0, icon04);
+		m.writeSprite(32, 0, icon03);
+		m.writeSprite(24, 0, icon02);
+		m.writeSprite(16, 0, icon01);
+		break;
+	default:
 		break;
 	}
 }
