@@ -11,11 +11,18 @@
 #endif // DEBUG
 
 //입출력 지정
+#define RX 2
+#define TX 3
 #define CS 4    // CS pin of MAX7219 module 파
 #define DIN 5   // DIN pin of MAX7219 module 초
 #define CLK 6   // CLK pin of MAX7219 module 빨
 #define maxInUse 14 //연결된 도트 매트릭스 갯수
-
+#define I2C_SDA A4
+#define I2C_SCL A5
+#define AUX1 7
+#define AUX2 8
+#define AUX3 9
+#define AUX4 10
 
 volatile long debounceTime = 0;
 volatile long currentTime = 0;
@@ -36,29 +43,39 @@ unsigned int mouthstate = 0;
 unsigned int state2 = 1;
 
 #ifdef DEBUG
-SoftwareSerial DEBUGSerial(2, 3); // RX, TX
+SoftwareSerial DEBUGSerial(RX, TX);
 #endif // DEBUG
 MaxMatrix m(DIN, CS, CLK, maxInUse);
 
 // the setup function runs once when you press reset or power the board
 void setup() {
 	Serial.begin(9600);
+#ifdef DEBUG
+	DEBUGSerial.begin(9600);
+#endif // DEBUG
 	m.init();
 	m.setIntensity(0);   // 도트 매트릭스 밝기 0~15
 	m.clear();
-#ifdef DEBUG
-
-#endif // DEBUG
-
-
 }
 
 // the loop function runs over and over again until power down or reset
 void loop() {                        //This is where the program loop starts.
 	if (state2 == 1) {
-		if (Serial.available() > 0) {
-			Eyestate = int(Serial.parseInt());
+#ifdef DEBUG
+		if (DEBUGSerial.available() > 0) {
+			Eyestate = int(DEBUGSerial.parseInt());
+			DEBUGSerial.print("Eyestate: ");
+			DEBUGSerial.println(Eyestate);
 		}
+#endif // DEBUG
+		if (Serial.available() > 0) {//시리얼로 리모컨 값 받아서 파싱후 int형 변환
+			Eyestate = int(Serial.parseInt());
+#ifdef DEBUG
+			DEBUGSerial.print("Eyestate: ");
+			DEBUGSerial.println(Eyestate);
+#endif // DEBUG
+		}
+
 		if (counter2 > 17) {                    //눈 깜박이는 애니메이션 루프
 			for (int i = 0; i < 5; i++) {
 				column1L = column1L - 1;
