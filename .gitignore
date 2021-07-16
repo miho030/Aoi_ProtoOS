@@ -1,3 +1,5 @@
 *.Protogen.vsarduino.h
 *.suo
 *.DSNlck
+PCB/
+Protogen/__vm/
