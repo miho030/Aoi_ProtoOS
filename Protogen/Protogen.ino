@@ -11,7 +11,8 @@
 #include "src/MaxMatrix.h"
 
 #ifdef OLED
-#include <U8glib.h>  
+#include <U8glib.h>
+#include "src/screen.h"
 #endif // OLED
 
 #ifdef DEBUG
