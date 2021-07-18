@@ -3,15 +3,23 @@
  Created: 2020-11-11 오전 5:57:03
  Author:  jaehyun
 */
+
 #define DEBUG
+#define OLED
+
 #include "src/expression.h"
 #include "src/MaxMatrix.h"
+
+#ifdef OLED
+#include <U8glib.h>  
+#endif // OLED
+
 #ifdef DEBUG
 #include <SoftwareSerial.h>
 #endif // DEBUG
 
 //입출력 지정
-#define SRX 2
+#define SRX 2	//PD2
 #define STX 3
 #define CS 4    // CS pin of MAX7219 module 파
 #define DIN 5   // DIN pin of MAX7219 module 초
@@ -19,10 +27,10 @@
 #define maxInUse 14 //연결된 도트 매트릭스 갯수
 #define I2C_SDA A4
 #define I2C_SCL A5
-#define AUX1 7
-#define AUX2 8
+#define AUX1 7	//PD7
+#define AUX2 8	//PB0
 #define AUX3 9
-#define AUX4 10
+#define AUX4 10	//PB2
 
 volatile long debounceTime = 0;
 volatile long currentTime = 0;
@@ -42,9 +50,14 @@ unsigned int Eyestate = 0; //처음 전원 넣었을 때 나오는 화면을 설
 unsigned int mouthstate = 0;
 unsigned int state2 = 1;
 
+#ifdef OLED
+U8GLIB_SSD1306_128X32 u8g(U8G_I2C_OPT_NONE);
+#endif // OLED
+
 #ifdef DEBUG
 SoftwareSerial DEBUGSerial(SRX, STX);
 #endif // DEBUG
+
 MaxMatrix m(DIN, CS, CLK, maxInUse);
 
 // the setup function runs once when you press reset or power the board
@@ -56,11 +69,15 @@ void setup() {
 	m.init();
 	m.setIntensity(0);   // 도트 매트릭스 밝기 0~15
 	m.clear();
-}
+#ifdef OLED
+	draw(Eyestate);	//처음화면 표시  
+#endif // OLED
 
+}
 // the loop function runs over and over again until power down or reset
 void loop() {                        //This is where the program loop starts.
 	if (state2 == 1) {
+		int Previous_Eyestate = Eyestate;
 #ifdef DEBUG
 		if (DEBUGSerial.available() > 0) {
 			Eyestate = int(DEBUGSerial.parseInt());
@@ -75,6 +92,11 @@ void loop() {                        //This is where the program loop starts.
 			DEBUGSerial.println(Eyestate);
 #endif // DEBUG
 		}
+#ifdef OLED
+		if (Eyestate != Previous_Eyestate) {//표정값에 변화가 생기면 화면에 다시 그림
+			draw(Eyestate);
+		}
+#endif // OLED
 
 		if (counter2 > 17) {                    //눈 깜박이는 애니메이션 루프
 			for (int i = 0; i < 5; i++) {
@@ -114,6 +136,13 @@ void loop() {                        //This is where the program loop starts.
 		m.clear();
 	}
 }
+
+#ifdef OLED
+void draw(int num) {
+
+}
+#endif // OLED
+
 
 void Change_expression(int num) {
 	switch (num) {                      //First button press: Happy expression

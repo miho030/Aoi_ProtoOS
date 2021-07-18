@@ -99,15 +99,16 @@
   (Folder "Referenced Projects")
   (MPSSessionName "azaz3")
   (PartMRUSelector
-    (VCC_ARROW
-      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+    ("SW PUSHBUTTON"
+      (FullPartName "SW PUSHBUTTON.Normal")
+      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
       (DeviceIndex "0"))
     (GND
       (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
       (DeviceIndex "0"))
-    (CON4
-      (FullPartName "CON4.Normal")
-      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+    (RESISTOR
+      (FullPartName "RESISTOR.Normal")
+      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
       (DeviceIndex "0"))
     ("CAP NP"
       (FullPartName "CAP NP.Normal")
@@ -117,20 +118,35 @@
       (FullPartName "CAP POL.Normal")
       (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
       (DeviceIndex "0"))
+    (VCC_ARROW
+      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (AMS1117
+      (FullPartName "AMS1117.Normal")
+      (LibraryName "E:\SPB_DATA\CUSTOM_LIBRARY\LIBRARY\AMS1117.OLB")
+      (DeviceIndex "0"))
+    (HC-05
+      (FullPartName "HC-05.Normal")
+      (LibraryName "E:\SPB_DATA\CUSTOM_LIBRARY\LIBRARY\HC-05.OLB")
+      (DeviceIndex "0"))
     (CON3
       (FullPartName "CON3.Normal")
       (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
       (DeviceIndex "0"))
+    (CON8A
+      (FullPartName "CON8A.Normal")
+      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (CON4
+      (FullPartName "CON4.Normal")
+      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (CON8B
+      (FullPartName "CON8B.Normal")
+      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
     ("DIODE ZENER"
       (FullPartName "DIODE ZENER.Normal")
-      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
-      (DeviceIndex "0"))
-    ("SW PUSHBUTTON"
-      (FullPartName "SW PUSHBUTTON.Normal")
-      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
-      (DeviceIndex "0"))
-    (RESISTOR
-      (FullPartName "RESISTOR.Normal")
       (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
       (DeviceIndex "0"))
     (CON2
@@ -170,14 +186,14 @@
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -8 -31 155 355 103 382"))
+        (Placement "44 2 3 -1 -1 -8 -31 155 355 103 382"))
       (Tab 0))
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 2 3 -1 -1 -8 -31 26 1331 26 301")
-        (Scroll "465 340")
-        (Zoom "198")
+        (Placement "44 0 1 -1 -1 -8 -31 26 1331 26 301")
+        (Scroll "-78 0")
+        (Zoom "95")
         (Occurrence "/"))
       (Path "E:\SOURCE\REPOS\PCB\PROTOGEN.DSN")
       (Schematic "SCHEMATIC1")
