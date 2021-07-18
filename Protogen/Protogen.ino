@@ -11,8 +11,8 @@
 #endif // DEBUG
 
 //입출력 지정
-#define RX 2
-#define TX 3
+#define SRX 2
+#define STX 3
 #define CS 4    // CS pin of MAX7219 module 파
 #define DIN 5   // DIN pin of MAX7219 module 초
 #define CLK 6   // CLK pin of MAX7219 module 빨
@@ -38,12 +38,12 @@ int column1 = 8;
 int column2 = 16;
 int column3 = -1;
 int column4 = 7;
-unsigned int Eyestate = 5; //처음 전원 넣었을 때 나오는 화면을 설정함(case문에서 case 구문 번호로 하면 됨)
+unsigned int Eyestate = 0; //처음 전원 넣었을 때 나오는 화면을 설정함(case문에서 case 구문 번호로 하면 됨)
 unsigned int mouthstate = 0;
 unsigned int state2 = 1;
 
 #ifdef DEBUG
-SoftwareSerial DEBUGSerial(RX, TX);
+SoftwareSerial DEBUGSerial(SRX, STX);
 #endif // DEBUG
 MaxMatrix m(DIN, CS, CLK, maxInUse);
 
