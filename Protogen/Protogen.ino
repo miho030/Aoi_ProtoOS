@@ -34,7 +34,7 @@ int column1 = 8;
 int column2 = 16;
 int column3 = -1;
 int column4 = 7;
-int Eyestate = 5; //처음 전원 넣었을 때 나오는 화면을 설정함(case문에서 case 구문 번호로 하면 됨)
+int Eyestate = 6; //처음 전원 넣었을 때 나오는 화면을 설정함(case문에서 case 구문 번호로 하면 됨)
 int mouthstate = 0;
 int state2 = 1;
 int stateSerial;
@@ -272,7 +272,7 @@ void Change_expression_mouth(int num) {
   case 0: //기본 코,입
     m.writeSprite(56, 0, noseLeft);
     m.writeSprite(48, 0, noseRight);
-	
+  
     m.writeSprite(88, 0, icon01L);
     m.writeSprite(80, 0, icon02L);
     m.writeSprite(72, 0, icon03L);
