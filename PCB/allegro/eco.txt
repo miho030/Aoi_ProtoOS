@@ -1,0 +1,209 @@
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   1  |
+|------------------------------------------------------------------------------|
+|  E:/SOURCE/REPOS/PCB/allegro/PROTOGEN.brd                                    |
+|                                                    Sun Aug 01 00:11:04 2021  |
+|------------------------------------------------------------------------------|
+| NET CHANGES                                                                  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|   net  name |  type of change |                net     pins                  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+  3.3V         pins ADDED TO this new net
+                                 C3.1           C4.1           SW2.2          
+                                 U1.2           U2.12          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  CLK          pins ADDED TO this new net
+                                 J2.2           U3.10          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  CS           pins ADDED TO this new net
+                                 J2.1           U3.2           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  DIN          pins ADDED TO this new net
+                                 J2.3           U3.9           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  GND          pins ADDED TO this existing net (pins not previously on any net)
+                                 C1.2                           
+                                 C2.2                           
+                                 C3.2                           
+                                 C4.2                           
+                                 C5.2                           
+                                 C6.2                           
+                                 C7.2                           
+                                 J1.5                           
+                                 J2.4                           
+                                 J3.4                           
+                                 J4.3                           
+                                 J7.5                           
+                                 J7.6                           
+                                 J7.7                           
+                                 J7.8                           
+                                 R2.2                           
+                                 SW1.2                          
+                                 U1.1                           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  I2C_C        pins ADDED TO this new net
+                                 J3.1           U3.28          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  I2C_D        pins ADDED TO this new net
+                                 J3.2           U3.27          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N08731       pins ADDED TO this new net
+                                 C6.1           U3.7           Y1.1           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N08739       pins ADDED TO this new net
+                                 C7.1           U3.8           Y1.2           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   2  |
+|------------------------------------------------------------------------------|
+|  E:/SOURCE/REPOS/PCB/allegro/PROTOGEN.brd                                    |
+|                                                    Sun Aug 01 00:11:04 2021  |
+|------------------------------------------------------------------------------|
+| NET CHANGES                                                                  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|   net  name |  type of change |                net     pins                  |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+  N11012       pins ADDED TO this new net
+                                 C5.1           U3.20          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N23050       pins ADDED TO this new net
+                                 J7.2           U3.12          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N23060       pins ADDED TO this new net
+                                 J7.4           U3.14          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N23249       pins ADDED TO this new net
+                                 J7.3           U3.13          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N23855       pins ADDED TO this new net
+                                 J7.1           U3.11          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N26423       pins ADDED TO this new net
+                                 R1.2           SW1.1          U3.29          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  N34453       pins ADDED TO this new net
+                                 R2.1           SW2.1          U2.34          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  RX           pins ADDED TO this new net
+                                 U2.1           U3.31          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  S_RX         pins ADDED TO this new net
+                                 J4.1           U3.32          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  S_TX         pins ADDED TO this new net
+                                 J4.2           U3.1           
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  TX           pins ADDED TO this new net
+                                 U2.2           U3.30          
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+  VCC          pins ADDED TO this existing net (pins not previously on any net)
+                                 C1.1                           
+                                 C2.1                           
+                                 J1.1                           
+                                 J2.5                           
+                                 J3.3                           
+                                 J7.9                           
+                                 J7.10                          
+                                 J7.11                          
+                                 J7.12                          
+                                 R1.1                           
+                                 U1.3                           
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   3  |
+|------------------------------------------------------------------------------|
+|  E:/SOURCE/REPOS/PCB/allegro/PROTOGEN.brd                                    |
+|                                                    Sun Aug 01 00:11:04 2021  |
+|------------------------------------------------------------------------------|
+| COMPONENT DEFINITION added to design                                         |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    device type                                                               |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ AMS1117_0_SOT223_AMS1117
+ ATMEGA328-AU_0_TQFP32_AVCC=VCC_
+ CAP NP_SMC2012_0.1UF
+ CAP NP_SMC2012_22PF
+ CAP POL_CAP196_10UF
+ CON12_JUMPER3X4_CON12
+ CON3_JUMPER3_CON3
+ CON4_JUMPER4_CON4
+ CON5_JUMPER5_CON5
+ CON5_USB_MINI_B_CON5
+ CRYSTAL_HC49_SMD_16MHZ
+ HC-05_HC-05_HC-05
+ RESISTOR_SMR2012_10K
+ RESISTOR_SMR2012_1K
+ SW PUSHBUTTON_JUMPER2_RESET
+ SW PUSHBUTTON_JUMPER2_SW PUSHBU
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   4  |
+|------------------------------------------------------------------------------|
+|  E:/SOURCE/REPOS/PCB/allegro/PROTOGEN.brd                                    |
+|                                                    Sun Aug 01 00:11:04 2021  |
+|------------------------------------------------------------------------------|
+| COMPONENTS ADDED to design                                                   |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|    ref des        |    device type                                           |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ C1                  CAP POL_CAP196_10UF   
+ C2                  CAP NP_SMC2012_0.1UF  
+ C3                  CAP NP_SMC2012_0.1UF  
+ C4                  CAP POL_CAP196_10UF   
+ C5                  CAP NP_SMC2012_0.1UF  
+ C6                  CAP NP_SMC2012_22PF   
+ C7                  CAP NP_SMC2012_22PF   
+ J1                  CON5_USB_MINI_B_CON5  
+ J2                  CON5_JUMPER5_CON5     
+ J3                  CON4_JUMPER4_CON4     
+ J4                  CON3_JUMPER3_CON3     
+ J7                  CON12_JUMPER3X4_CON12 
+ R1                  RESISTOR_SMR2012_1K   
+ R2                  RESISTOR_SMR2012_10K  
+ SW1                 SW PUSHBUTTON_JUMPER2_RESET 
+ SW2                 SW PUSHBUTTON_JUMPER2_SW PUSHBU 
+ U1                  AMS1117_0_SOT223_AMS1117 
+ U2                  HC-05_HC-05_HC-05     
+ U3                  ATMEGA328-AU_0_TQFP32_AVCC=VCC_ 
+ Y1                  CRYSTAL_HC49_SMD_16MHZ 
+|------------------------------------------------------------------------------|
+|                                 ECO   REPORT                                 |
+|                                                                    Page   5  |
+|------------------------------------------------------------------------------|
+|  E:/SOURCE/REPOS/PCB/allegro/PROTOGEN.brd                                    |
+|                                                    Sun Aug 01 00:11:04 2021  |
+|------------------------------------------------------------------------------|
+| SLOT PROPERTIES added to design                                              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+|   slot_id    |   x   |   y   |   property   |             value              |
+|- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
+ C1.2                           PRIM_FILE      .\pstchip.dat
+ C2.2                           PRIM_FILE      .\pstchip.dat
+ C3.2                           PRIM_FILE      .\pstchip.dat
+ C4.2                           PRIM_FILE      .\pstchip.dat
+ C5.2                           PRIM_FILE      .\pstchip.dat
+ C6.2                           PRIM_FILE      .\pstchip.dat
+ C7.2                           PRIM_FILE      .\pstchip.dat
+ J1.5                           PRIM_FILE      .\pstchip.dat
+ J2.5                           PRIM_FILE      .\pstchip.dat
+ J3.4                           PRIM_FILE      .\pstchip.dat
+ J4.3                           PRIM_FILE      .\pstchip.dat
+ J7.9                           PRIM_FILE      .\pstchip.dat
+ R1.2                           PRIM_FILE      .\pstchip.dat
+ R2.2                           PRIM_FILE      .\pstchip.dat
+ SW1.2                          PRIM_FILE      .\pstchip.dat
+ SW2.2                          PRIM_FILE      .\pstchip.dat
+ U1.4                           PRIM_FILE      .\pstchip.dat
+ U2.4                           PRIM_FILE      .\pstchip.dat
+ U3.11                          PRIM_FILE      .\pstchip.dat
+ Y1.2                           PRIM_FILE      .\pstchip.dat
+|------------------------------------------------------------------------------|
+|       Nets changed          :      74                                        |
+|       Comp definitions added:      16                                        |
+|       Components added      :      20                                        |
+|       Slot property added   :      20                                        |
+|                                                                              |
+|   Total ECO changes reported:     130                                        |
+|------------------------------------------------------------------------------|

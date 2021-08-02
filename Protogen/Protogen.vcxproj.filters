@@ -30,6 +30,9 @@
     <ClInclude Include="src\expression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MaxMatrix.cpp">

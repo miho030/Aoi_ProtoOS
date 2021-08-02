@@ -1,0 +1,44 @@
+\t (00:00:02) allegro 16.6-2015 S115 (v16-6-112JF) Windows 32
+\t (00:00:02)     Journal start - Tue Aug 03 02:00:17 2021
+\t (00:00:02)         Host=JAEHYUN User=azaz3 Pid=17592 CPUs=4
+\t (00:00:02) CmdLine= D:\Cadence\SPB_16.6\tools\pcb\bin\allegro.exe E:\source\repos\PCB\allegro\PROTOGEN.brd
+\t (00:00:02) 
+\t (00:00:06) Opening existing design...
+\d (00:00:06) Design opened: E:/source/repos/PCB/allegro/PROTOGEN.brd
+\i (00:00:06) trapsize 1305
+\i (00:00:06) trapsize 1282
+\i (00:00:06) trapsize 1309
+\i (00:00:06) trapsize 1309
+\i (00:00:07) generaledit 
+\i (00:00:14) pick grid -21.297 89.726
+\t (00:00:14) last pick:  -21.590 89.535
+\i (00:00:14) zoom in 1 
+\i (00:00:14) setwindow pcb
+\i (00:00:14) zoom in -3.491 79.252
+\i (00:00:14) trapsize 655
+\i (00:00:14) zoom in 1 
+\i (00:00:14) setwindow pcb
+\i (00:00:14) zoom in -3.491 79.252
+\i (00:00:14) trapsize 327
+\i (00:00:14) zoom out 1 
+\i (00:00:14) setwindow pcb
+\i (00:00:14) zoom out -3.491 79.252
+\i (00:00:14) trapsize 655
+\i (00:00:14) zoom out 1 
+\i (00:00:14) setwindow pcb
+\i (00:00:14) zoom out -3.491 79.252
+\i (00:00:14) trapsize 1309
+\i (00:00:15) prepopup -3.491 79.252
+\i (00:00:15) pick grid 3.317 89.987
+\t (00:00:15) last pick:  3.175 90.170
+\i (00:00:16) delete 
+\i (00:00:16) pick grid -6.110 120.361
+\t (00:00:16) last pick:  -6.350 120.650
+\i (00:00:16) prepopup -5.062 119.838
+\i (00:00:17) done 
+\i (00:00:17) generaledit 
+\i (00:00:19) save 
+\i (00:00:20) fillin yes 
+\i (00:00:20) generaledit 
+\i (00:00:27) exit 
+\t (00:00:28)     Journal end - Tue Aug 03 02:00:43 2021

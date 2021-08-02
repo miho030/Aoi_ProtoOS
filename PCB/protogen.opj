@@ -8,11 +8,11 @@
       (Type "Schematic Design"))
     (DRC_Scope "0")
     (DRC_Action "0")
-    (DRC_Create_Warnings "FALSE")
+    (DRC_Create_Warnings "TRUE")
     (DRC_View_Output "FALSE")
     (DRC_Run_Electrical_Rules "TRUE")
     (DRC_Run_Physical_Rules "FALSE")
-    (DRC_Report_File "E:\SOURCE\SPB_DATA\PROTOGEN\PROTOGEN.DRC")
+    (DRC_Report_File "E:\source\repos\PCB\protogen.DRC")
     (DRC_Check_Ports "FALSE")
     (DRC_Check_Off-Page_Connectors "FALSE")
     (DRC_Report_Ports_and_Off-page_Connectors "FALSE")
@@ -81,7 +81,10 @@
     (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
     (BOM_One_Part_Per_Line "FALSE")
     (Open_BOM_in_Excel "TRUE")
-    (BOM_View_Output "FALSE"))
+    (BOM_View_Output "FALSE")
+    (DRC_Preserved_Waived "FALSE")
+    (DRC_Run_Electrical_Custom_DRC "FALSE")
+    (DRC_Run_Physical_Custom_DRC "FALSE"))
   (Folder "Outputs"
     (File ".\protogen.drc"
       (Type "Report"))
@@ -99,6 +102,10 @@
   (Folder "Referenced Projects")
   (MPSSessionName "azaz3")
   (PartMRUSelector
+    (CON12
+      (FullPartName "CON12.Normal")
+      (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
     ("SW PUSHBUTTON"
       (FullPartName "SW PUSHBUTTON.Normal")
       (LibraryName "D:\CADENCE\SPB_16.6\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
@@ -181,7 +188,7 @@
       (Path "Design Resources" ".\protogen.dsn")
       (Path "Design Resources" ".\protogen.dsn" "SCHEMATIC1")
       (Path "Outputs")
-      (Select "Design Resources" ".\protogen.dsn" "SCHEMATIC1" "PAGE1"))
+      (Select "Design Resources" ".\protogen.dsn"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
@@ -191,8 +198,8 @@
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -8 -31 26 1331 26 301")
-        (Scroll "-78 0")
+        (Placement "44 0 1 -1 -1 -8 -31 130 1233 130 595")
+        (Scroll "0 0")
         (Zoom "95")
         (Occurrence "/"))
       (Path "E:\SOURCE\REPOS\PCB\PROTOGEN.DSN")
