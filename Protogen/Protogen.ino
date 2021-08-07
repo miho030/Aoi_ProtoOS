@@ -4,6 +4,7 @@
  Author:  jaehyun
 */
 
+
 #define DEBUG
 #define OLED
 
@@ -11,6 +12,7 @@
 #include "src/MaxMatrix.h"
 
 #ifdef OLED
+#include <MsTimer2.h>
 #include <U8glib.h>
 #include "src/screen.h"
 #endif // OLED
@@ -61,6 +63,12 @@ SoftwareSerial DEBUGSerial(SRX, STX);
 
 MaxMatrix m(DIN, CS, CLK, maxInUse);
 
+#ifdef OLED
+void display_refresh() {
+	draw();
+}
+#endif // OLED
+
 // the setup function runs once when you press reset or power the board
 void setup() {
 	Serial.begin(9600);
@@ -71,9 +79,9 @@ void setup() {
 	m.setIntensity(0);   // 도트 매트릭스 밝기 0~15
 	m.clear();
 #ifdef OLED
-	draw(Eyestate);	//처음화면 표시  
+	MsTimer2::set(1000, display_refresh);	//OLED refresh time setting
+	MsTimer2::start;
 #endif // OLED
-
 }
 // the loop function runs over and over again until power down or reset
 void loop() {                        //This is where the program loop starts.
@@ -93,12 +101,6 @@ void loop() {                        //This is where the program loop starts.
 			DEBUGSerial.println(Eyestate);
 #endif // DEBUG
 		}
-#ifdef OLED
-		if (Eyestate != Previous_Eyestate) {//표정값에 변화가 생기면 화면에 다시 그림
-			draw(Eyestate);
-		}
-#endif // OLED
-
 		if (counter2 > 17) {                    //눈 깜박이는 애니메이션 루프
 			for (int i = 0; i < 5; i++) {
 				column1L = column1L - 1;
@@ -139,8 +141,14 @@ void loop() {                        //This is where the program loop starts.
 }
 
 #ifdef OLED
-void draw(int num) {
+void draw() {
+	switch (Eyestate) {
+	case 1:
 
+		break;
+	default:
+		break;
+	}
 }
 #endif // OLED
 
@@ -326,3 +334,4 @@ void Change_expression_mouth(int num) {
 		break;
 	}
 }
+

@@ -193,13 +193,13 @@
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 2 3 -1 -1 -8 -31 155 355 103 382"))
+        (Placement "44 0 1 -1 -1 -8 -31 155 355 103 382"))
       (Tab 0))
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -8 -31 130 1233 130 595")
-        (Scroll "0 0")
+        (Placement "44 2 3 -1 -1 -8 -31 130 1233 130 595")
+        (Scroll "-16 0")
         (Zoom "95")
         (Occurrence "/"))
       (Path "E:\SOURCE\REPOS\PCB\PROTOGEN.DSN")
