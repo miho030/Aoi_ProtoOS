@@ -1,0 +1,8 @@
+// boring expression (Left eye)
+byte boring_eyes_L1 [] =
+byte boring_eyes_L2 [] =
+
+
+// boring expression (Right eye)
+byte boring_eye_R1 [] =
+byte boring_eye_R2 [] =
