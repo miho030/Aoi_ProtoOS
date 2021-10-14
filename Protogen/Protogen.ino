@@ -86,29 +86,28 @@ void setup() {
 }
 // the loop function runs over and over again until power down or reset
 void loop() { //This is where the program loop starts.
-  DEBUGSerial.println("test1");
   if (state2 == 1) {
 #ifdef DEBUG
     if (DEBUGSerial.available() > 0) {
       temp = int(DEBUGSerial.parseInt());
       if (temp != 0) {
         Eyestate = temp - 1;
-      }
       DEBUGSerial.print("S_Eyestate: ");
       DEBUGSerial.println(Eyestate);
+      }
     }
 #endif // DEBUG
     if (Serial.available() > 0) {//시리얼로 리모컨 값 받아서 파싱후 int형 변환
       temp = int(Serial.parseInt());
       if (temp != 0){
         Eyestate = temp - 1;
-      }
+      
 #ifdef DEBUG
       DEBUGSerial.print("S_Eyestate: ");
       DEBUGSerial.println(Eyestate);
 #endif // DEBUG
+      }
     }
-    DEBUGSerial.println("test2");
     if (counter2 > 17) {                    //눈 깜박이는 애니메이션 루프
       for (int i = 0; i < 5; i++) {
         column1L = column1L - 1;
@@ -141,12 +140,9 @@ void loop() { //This is where the program loop starts.
       counter2 = 0;
     }
     counter2++;
-    DEBUGSerial.print("Change_expression: ");
-    DEBUGSerial.println(Eyestate);
     Change_expression(Eyestate); //Change_expression
   }
   else {
-    DEBUGSerial.println("test3");
     m.clear();
   }
 }
@@ -167,26 +163,26 @@ void draw() {
 void Change_expression(int num) {
   switch (num) {                      //First button press: Happy expression
   case 0:
-    m.writeSprite(104, 0, Eye01L);
-    m.writeSprite(96, 0, Eye02L);
-    m.writeSprite(8, 0, Eye02);
-    m.writeSprite(0, 0, Eye01);
+    m.writeSprite(104, 0, Default_eye_01_L1);
+    m.writeSprite(96, 0, Default_eye_01_L2);
+    m.writeSprite(8, 0, Default_eye_01_R1);
+    m.writeSprite(0, 0, Default_eye_01_R2);
     Change_expression_mouth(0);
     break;
 
   case 1:                             //Second button press: Surprised
-    m.writeSprite(104, 0, Spooked1L);
-    m.writeSprite(96, 0, Spooked2L);
-    m.writeSprite(8, 0, Spooked1);
-    m.writeSprite(0, 0, Spooked2);
+    m.writeSprite(104, 0, Default_eye_02_L1);
+    m.writeSprite(96, 0, Default_eye_02_L2);
+    m.writeSprite(8, 0, Default_eye_02_R1);
+    m.writeSprite(0, 0, Default_eye_02_R2);
     Change_expression_mouth(0);
     break;
 
   case 2:                             //Third button press: Angry expression
-    m.writeSprite(104, 0, Angry1L);
-    m.writeSprite(96, 0, Angry2L);
-    m.writeSprite(8, 0, Angry1);
-    m.writeSprite(0, 0, Angry2);
+    m.writeSprite(104, 0, circle_eye_L1);
+    m.writeSprite(96, 0, circle_eye_L2);
+    m.writeSprite(8, 0, circle_eye_R1);
+    m.writeSprite(0, 0, circle_eye_R2);
     Change_expression_mouth(0);
 /*
     counter++;
@@ -244,13 +240,7 @@ void Change_expression(int num) {
     m.writeSprite(0, 0, boring_eye_R2);
     Change_expression_mouth(0);
     break;
-    /*
-            #========================================#
-            #                                        #
-            #   Modified eye, mouth section (right)  #
-            #                                        #
-            #========================================#
-     */
+
   case 5:                             //seventh button press: dying emotion(X eyes)
     // 오른쪽, 왼쪽 눈 구현
     m.writeSprite(104, 0, dying_eye_L1);
@@ -290,8 +280,6 @@ void Change_expression(int num) {
 }
 
 void Change_expression_mouth(int num) {
-  DEBUGSerial.print("Change_expression_mouth: ");
-  DEBUGSerial.println(num);
   switch (num) {
   case 0: //기본 코,입
     m.writeSprite(56, 0, noseLeft);
