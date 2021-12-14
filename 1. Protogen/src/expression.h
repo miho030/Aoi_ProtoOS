@@ -1,5 +1,22 @@
 #pragma once
 
+/*
+
+ * Modified at 2019 - 2021 by AOI, Jaehyun4428
+   version 1.1.0-beta
+   
+   group of expressions.
+   
+ * major issue
+   - fix all bugs from lastest release version of protogen code.
+   - reinforcemnt of led print function
+   - reinforcement of expression print & sleep funtional.
+   
+   - BRUNCH
+      > Add bluetooth communication function
+      > Add bluetooth remote controller & bluetooth application access control function.
+*/
+
 /* ##################################################################################################### */
 /* ----------------------------------------------------------------------------------------------------- */
 		//Right side of the helmet
