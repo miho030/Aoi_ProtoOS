@@ -2,6 +2,18 @@
  * MaxMatrix
  * Version 1.0 Feb 2013
  * Copyright 2013 Oscar Kin-Chung Au
+ 
+ 
+ * Modified at 2019 - 2021 by AOI, Jaehyun4428
+ 
+ * major issue
+   - fix all bugs from lastest release version of protogen code.
+   - reinforcemnt of led print function
+   - reinforcement of expression print & sleep funtional.
+   
+   - BRUNCH
+      > Add bluetooth communication function
+      > Add bluetooth remote controller & bluetooth application access control function.
  */
 
 
